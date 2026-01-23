@@ -482,10 +482,10 @@ Contributions are always welcome! 🎉
 If you want to help improve this project, feel free to fork, make changes, and submit a pull request.
 
 👉 Contribute here:  
-🔗 https://github.com/Navneet-pratap1027/study-notion-platform/contribute
+🔗 https://github.com/AshishKumar1603/StudyNotion_Edtech_Platform/contribute
 
 👉 View Pull Requests:  
-🔗 https://github.com/Navneet-pratap1027/study-notion-platform/pulls
+🔗 https://github.com/AshishKumar1603/StudyNotion_Edtech_Platform/pulls
 
 </center>
 <p align="right">(<a href="#top">back to top</a>)</p>
