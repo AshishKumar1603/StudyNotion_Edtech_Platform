@@ -2,7 +2,7 @@
 <div align="center">
   <h1>StudyNotion</h1>
   <h2> Online Education Platform for You </h2>
-  <h3> Check out at https://studynotion-frontend.vercel.app/</h3>
+  <h3> Check out at http://study-notion-edtech-platform-mu-virid.vercel.app/</h3>
 </div>
 
 <br>
