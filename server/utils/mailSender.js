@@ -55,7 +55,7 @@ transporter.verify((error, success) => {
 const mailSender = async (email, title, body) => {
   try {
     const info = await transporter.sendMail({
-      from: `"StudyNotion" <${process.env.MAIL_FROM}>`,
+      from: `"StudyNotion" <${process.env.MAIL_USER}>`,
       to: email,
       subject: title,
       html: body,
