@@ -1,15 +1,24 @@
-/* const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 const mailSender = async (email, title, body) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST, 
-      port: process.env.MAIL_PORT, 
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
       secure: false,
       auth: {
-        user: process.env.MAIL_USER, 
-        pass: process.env.MAIL_PASSWORD, 
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD,
       },
+    });
+
+    /* 🔥 SMTP VERIFY — SABSE IMPORTANT */
+    transporter.verify((error, success) => {
+      if (error) {
+        console.log("SMTP VERIFY ERROR:", error);
+      } else {
+        console.log("SMTP READY");
+      }
     });
 
     const info = await transporter.sendMail({
@@ -27,11 +36,11 @@ const mailSender = async (email, title, body) => {
   }
 };
 
-module.exports = mailSender; */
+module.exports = mailSender;
 
-const nodemailer = require("nodemailer");
+/* const nodemailer = require("nodemailer");
 
-/* ✅ transporter ek hi baar banega */
+ ✅ transporter ek hi baar banega 
 const transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
   port: process.env.MAIL_PORT,
@@ -42,7 +51,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-/* 🔥 SMTP VERIFY — SABSE IMPORTANT */
+🔥 SMTP VERIFY — SABSE IMPORTANT 
 transporter.verify((error, success) => {
   if (error) {
     console.log("SMTP VERIFY ERROR:", error);
@@ -51,7 +60,7 @@ transporter.verify((error, success) => {
   }
 });
 
-/* ✅ Actual mail sender */
+ ✅ Actual mail sender 
 const mailSender = async (email, title, body) => {
   try {
     const info = await transporter.sendMail({
@@ -69,4 +78,4 @@ const mailSender = async (email, title, body) => {
   }
 };
 
-module.exports = mailSender;
+module.exports = mailSender; */
