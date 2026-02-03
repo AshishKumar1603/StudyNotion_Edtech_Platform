@@ -57,7 +57,7 @@ export const courseEndpoints = {
 
 // ================= CATEGORIES =================
 export const categoriesEndpoints = {
-  GET_ALL_CATEGORIES_API: BASE_URL + "/api/v1/course/showAllCategories",
+  GET_ALL_CATEGORIES_API: BASE_URL + "category/showAllCategories",
 };
 
 // ================= RATINGS =================
