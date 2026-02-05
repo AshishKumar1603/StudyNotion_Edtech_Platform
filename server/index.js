@@ -25,7 +25,7 @@ const app = express();
 // PORT
 const PORT = process.env.PORT || 4000;
 
-// ================= Middleware =================
+//  ================= Middleware =================
 
 app.use(
   cors({
