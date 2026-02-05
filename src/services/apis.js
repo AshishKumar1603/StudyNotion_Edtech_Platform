@@ -13,7 +13,7 @@ export const endpoints = {
   RESETPASSWORD_API: BASE_URL + "/auth/reset-password",
 };
 
-console.log("SENDOTP_API =", endpoints.SENDOTP_API);
+//console.log("SENDOTP_API =", endpoints.SENDOTP_API);
 
 // ================= PROFILE =================
 export const profileEndpoints = {
