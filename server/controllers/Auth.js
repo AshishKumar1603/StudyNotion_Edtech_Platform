@@ -85,10 +85,12 @@ exports.signup = async (req, res) => {
       message: "Signup successful & logged in",
     });
   } catch (error) {
-    console.error(error);
+    // PURANA CATCH BLOCK HATA KAR YE DAALEIN:
+    console.error("DEBUG SIGNUP ERROR:", error);
     return res.status(500).json({
       success: false,
       message: "Signup failed",
+      error: error.message,
     });
   }
 };
