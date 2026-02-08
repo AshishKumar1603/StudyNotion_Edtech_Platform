@@ -1,36 +1,41 @@
-import { useParams, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { catalogData } from "../services/apis";
 
 function Catalog() {
-  const { catalogName } = useParams()
-  const navigate = useNavigate()
+  const { catalogName } = useParams();
+  const navigate = useNavigate();
 
-  const [category, setCategory] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [category, setCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategory = async () => {
-      setLoading(true) // Reset loading on catalog change
-      try {
+      setLoading(true); // Reset loading on catalog change
+      /* try {
         const res = await axios.get(
           `http://localhost:4000/api/v1/course/getCategoryPageDetails/${catalogName}`
-        )
+        ) */
+      try {
+        const res = await axios.get(
+          `${catalogData.CATALOGPAGEDATA_API}/${catalogName}`,
+        );
         // Ensure we are targeting the right data path from your backend response
-        setCategory(res.data.data?.selectedCategory || res.data.data)
+        setCategory(res.data.data?.selectedCategory || res.data.data);
       } catch (err) {
-        console.error("Error fetching category:", err)
-        setCategory(null)
+        console.error("Error fetching category:", err);
+        setCategory(null);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchCategory()
-  }, [catalogName])
+    fetchCategory();
+  }, [catalogName]);
 
   if (loading) {
-    return <div style={{ color: "white", padding: "20px" }}>Loading...</div>
+    return <div style={{ color: "white", padding: "20px" }}>Loading...</div>;
   }
 
   if (!category) {
@@ -39,7 +44,7 @@ function Catalog() {
         <h1>No category found</h1>
         <p>Please check if the category slug is correct in the database.</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -53,12 +58,24 @@ function Catalog() {
       </p>
 
       {/* ✅ FIX: Added optional chaining (?.) to prevent 'length' error */}
-      {(!category?.courses || category?.courses?.length === 0) ? (
-        <div style={{ padding: "20px", background: "#161d29", borderRadius: "8px" }}>
+      {!category?.courses || category?.courses?.length === 0 ? (
+        <div
+          style={{
+            padding: "20px",
+            background: "#161d29",
+            borderRadius: "8px",
+          }}
+        >
           <p>No courses available for this category yet.</p>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "20px",
+          }}
+        >
           {category.courses.map((course) => (
             <div
               key={course._id}
@@ -66,7 +83,7 @@ function Catalog() {
                 background: "#161d29",
                 borderRadius: "8px",
                 overflow: "hidden",
-                border: "1px solid #424854"
+                border: "1px solid #424854",
               }}
             >
               <img
@@ -77,14 +94,34 @@ function Catalog() {
 
               <div style={{ padding: "15px" }}>
                 <h3 style={{ color: "#f1f2ff" }}>{course?.courseName}</h3>
-                <p style={{ fontSize: "14px", color: "#99daff", margin: "5px 0" }}>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    color: "#99daff",
+                    margin: "5px 0",
+                  }}
+                >
                   {course?.instructor?.firstName} {course?.instructor?.lastName}
                 </p>
-                <p style={{ fontSize: "14px", color: "#ccc", height: "40px", overflow: "hidden" }}>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    color: "#ccc",
+                    height: "40px",
+                    overflow: "hidden",
+                  }}
+                >
                   {course?.courseDescription}
                 </p>
 
-                <p style={{ marginTop: "10px", color: "#ffd60a", fontWeight: "bold", fontSize: "20px" }}>
+                <p
+                  style={{
+                    marginTop: "10px",
+                    color: "#ffd60a",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                  }}
+                >
                   ₹ {course?.price}
                 </p>
 
@@ -98,7 +135,7 @@ function Catalog() {
                     border: "none",
                     borderRadius: "8px",
                     fontWeight: "bold",
-                    color: "#000814"
+                    color: "#000814",
                   }}
                   onClick={() => navigate(`/courses/${course._id}`)}
                 >
@@ -110,7 +147,7 @@ function Catalog() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default Catalog
+export default Catalog;
